@@ -16,7 +16,7 @@
 | Phase 4 — Core Worker | ✅ Complete | Local `wrangler dev` testing passed. Guestbook page, API routes, and admin endpoints working. |
 | Phase 5 — Queue Consumer | ✅ Complete | Implemented in `src/queue-consumer.ts`, wired via `wrangler.jsonc`, tested by submitting entries and observing auto-approve/reject behavior. |
 | Phase 6 — Frontend | ✅ Complete | Created `public/index.html`, `public/admin.html`, `public/styles.css`, `public/app.js`, `public/admin.js`; static assets wired to Worker via `ASSETS` binding; API-only Worker now serves UI via assets. |
-| Phase 7 — Deploy & CI/CD | ⏳ Not started |  |
+| Phase 7 — Deploy & CI/CD | 🔄 In progress | GitHub Actions workflow created. Awaiting Cloudflare API token setup and first deploy. |
 
 ---
 
