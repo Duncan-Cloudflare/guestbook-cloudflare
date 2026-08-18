@@ -15,8 +15,27 @@
 			"database_id": "ddbaee27-34a1-4266-8ca9-84a08fd0d52b"
 		}
 	],
-	// Bindings will be added in later phases:
-	// "d1_databases": [...],
-	// "kv_namespaces": [...],
-	// "queues": {...}
+	"kv_namespaces": [
+		{
+			"binding": "GUESTBOOK_CACHE",
+			"id": "7cc16057ab364c16a6395493df8c9fb7"
+		}
+	],
+	"queues": {
+		"producers": [
+			{
+				"binding": "GUESTBOOK_EVENTS",
+				"queue": "guestbook-events"
+			}
+		],
+		"consumers": [
+			{
+				"queue": "guestbook-events",
+				"max_batch_size": 10,
+				"max_batch_timeout": 5,
+				"max_retries": 3,
+				"dead_letter_queue": "guestbook-events-dlq"
+			}
+		]
+	}
 }
