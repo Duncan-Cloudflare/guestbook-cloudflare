@@ -1,13 +1,22 @@
 {
-  "name": "guestbook-cloudflare",
-  "main": "src/index.ts",
-  "compatibility_date": "2026-08-18",
-  "compatibility_flags": ["nodejs_compat"],
-  "observability": {
-    "enabled": true
-  },
-  // Bindings will be added in later phases:
-  // "d1_databases": [...],
-  // "kv_namespaces": [...],
-  // "queues": {...}
+	"name": "guestbook-cloudflare",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-08-18",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"observability": {
+		"enabled": true
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "guestbook-db",
+			"database_id": "ddbaee27-34a1-4266-8ca9-84a08fd0d52b"
+		}
+	],
+	// Bindings will be added in later phases:
+	// "d1_databases": [...],
+	// "kv_namespaces": [...],
+	// "queues": {...}
 }
