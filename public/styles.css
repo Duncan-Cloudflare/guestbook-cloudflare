@@ -1,0 +1,182 @@
+:root {
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #212529;
+  --muted: #6c757d;
+  --primary: #0066cc;
+  --primary-hover: #0052a3;
+  --danger: #dc3545;
+  --success: #198754;
+  --warning: #ffc107;
+  --border: #dee2e6;
+  --radius: 8px;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+header {
+  margin-bottom: 2rem;
+}
+
+h1 {
+  margin: 0 0 0.5rem;
+  font-size: 2rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--primary);
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+input,
+textarea,
+button,
+select {
+  font: inherit;
+  padding: 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+button {
+  cursor: pointer;
+  background: var(--primary);
+  color: white;
+  border: none;
+  font-weight: 500;
+}
+
+button:hover {
+  background: var(--primary-hover);
+}
+
+button.secondary {
+  background: var(--muted);
+}
+
+button.danger {
+  background: var(--danger);
+}
+
+button.success {
+  background: var(--success);
+}
+
+button.warning {
+  background: var(--warning);
+  color: #000;
+}
+
+.message {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  display: none;
+}
+
+.message.success {
+  background: #d4edda;
+  color: #155724;
+  display: block;
+}
+
+.message.error {
+  background: #f8d7da;
+  color: #721c24;
+  display: block;
+}
+
+.entry {
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
+}
+
+.entry:last-child {
+  border-bottom: none;
+}
+
+.entry .meta {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.entry .name {
+  font-weight: 600;
+}
+
+.entry .status {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.125rem 0.5rem;
+  border-radius: 999px;
+  background: #e9ecef;
+}
+
+.entry .status.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.entry .status.approved {
+  background: #d4edda;
+  color: #155724;
+}
+
+.entry .status.rejected {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.entry .status.deleted {
+  background: #e2e3e5;
+  color: #383d41;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+nav {
+  margin-bottom: 1.5rem;
+}
+
+nav a {
+  margin-right: 1rem;
+}

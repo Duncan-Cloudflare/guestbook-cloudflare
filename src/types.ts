@@ -19,5 +19,6 @@ export interface Env {
   DB: D1Database;
   GUESTBOOK_CACHE: KVNamespace;
   GUESTBOOK_EVENTS: Queue<QueueMessage>;
+  ASSETS: Fetcher;
   ADMIN_SECRET: string;
 }
