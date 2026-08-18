@@ -3,18 +3,124 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guestbook</title>
+  <title>Guestbook — Cloudflare Demo</title>
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <header>
-    <h1>Guestbook</h1>
-    <p>Leave a message. <a href="/admin.html">Admin</a></p>
+  <header class="hero">
+    <div class="badge demo">Demo</div>
+    <h1>Cloudflare Guestbook</h1>
+    <p class="subtitle">
+      Sign the guestbook and watch your message flow through <strong>Workers</strong>,
+      <strong>Queues</strong>, <strong>D1</strong>, and <strong>KV</strong>.
+    </p>
+    <p class="admin-link"><a href="/admin.html">Moderation panel &rarr;</a></p>
   </header>
+
+  <section class="card diagram-card">
+    <h2>How your message travels</h2>
+    <div class="architecture-diagram" role="img" aria-label="Architecture diagram showing Browser, Worker, Queue, D1, and KV">
+      <svg viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#6c757d" />
+          </marker>
+        </defs>
+
+        <!-- Browser -->
+        <rect x="20" y="95" width="110" height="70" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+        <text x="75" y="125" text-anchor="middle" font-size="14" font-weight="600" fill="#1565c0">Browser</text>
+        <text x="75" y="145" text-anchor="middle" font-size="11" fill="#1565c0">You</text>
+
+        <!-- Arrow 1 -->
+        <line x1="130" y1="130" x2="200" y2="130" stroke="#6c757d" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <text x="165" y="122" text-anchor="middle" font-size="11" fill="#6c757d">POST</text>
+
+        <!-- Worker -->
+        <rect x="210" y="95" width="120" height="70" rx="8" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
+        <text x="270" y="125" text-anchor="middle" font-size="14" font-weight="600" fill="#ef6c00">Worker</text>
+        <text x="270" y="145" text-anchor="middle" font-size="11" fill="#ef6c00">API + UI</text>
+
+        <!-- Arrow 2: Worker to Queue -->
+        <line x1="270" y1="165" x2="270" y2="210" stroke="#6c757d" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <text x="300" y="193" text-anchor="start" font-size="11" fill="#6c757d">enqueue</text>
+
+        <!-- Arrow 3: Worker to KV -->
+        <line x1="330" y1="130" x2="430" y2="130" stroke="#6c757d" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <text x="380" y="122" text-anchor="middle" font-size="11" fill="#6c757d">cache</text>
+
+        <!-- Queue -->
+        <rect x="210" y="210" width="120" height="40" rx="8" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2"/>
+        <text x="270" y="235" text-anchor="middle" font-size="13" font-weight="600" fill="#6a1b9a">Queue</text>
+
+        <!-- Arrow 4: Queue to D1 -->
+        <line x1="330" y1="230" x2="540" y2="230" stroke="#6c757d" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <text x="435" y="222" text-anchor="middle" font-size="11" fill="#6c757d">async process</text>
+
+        <!-- KV -->
+        <rect x="440" y="95" width="110" height="70" rx="8" fill="#e8f5e9" stroke="#388e3c" stroke-width="2"/>
+        <text x="495" y="125" text-anchor="middle" font-size="14" font-weight="600" fill="#2e7d32">KV</text>
+        <text x="495" y="145" text-anchor="middle" font-size="11" fill="#2e7d32">fast reads</text>
+
+        <!-- D1 -->
+        <rect x="550" y="195" width="110" height="70" rx="8" fill="#fce4ec" stroke="#c2185b" stroke-width="2"/>
+        <text x="605" y="225" text-anchor="middle" font-size="14" font-weight="600" fill="#ad1457">D1</text>
+        <text x="605" y="245" text-anchor="middle" font-size="11" fill="#ad1457">source of truth</text>
+
+        <!-- Arrow 5: KV back to Browser (read) -->
+        <path d="M 495 95 Q 495 40 130 40 Q 75 40 75 95" fill="none" stroke="#6c757d" stroke-width="2" stroke-dasharray="4 2" marker-end="url(#arrowhead)"/>
+        <text x="270" y="55" text-anchor="middle" font-size="11" fill="#6c757d">serve approved messages</text>
+      </svg>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Submit</h3>
+        <p>You fill in the form and send your message.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Queue</h3>
+        <p>The Worker enqueues your message for async processing.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Moderate</h3>
+        <p>A consumer checks the content and stores it in D1.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <h3>Display</h3>
+        <p>Approved messages are cached in KV and shown here.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Tech stack</h2>
+    <div class="tech-badges">
+      <span class="badge workers">Cloudflare Workers</span>
+      <span class="badge d1">D1</span>
+      <span class="badge kv">KV</span>
+      <span class="badge queues">Queues</span>
+      <span class="badge github">GitHub Actions</span>
+    </div>
+    <div class="status-badges">
+      <span class="status-dot green"></span> Connected to Workers
+      <span class="status-dot purple"></span> Queue: guestbook-events
+      <span class="status-dot blue"></span> Database: guestbook-db
+      <span class="status-dot green"></span> Cache: GUESTBOOK_CACHE
+    </div>
+  </section>
 
   <div id="message" class="message"></div>
 
   <section class="card">
+    <h2>Sign the guestbook</h2>
     <form id="guestbook-form">
       <input type="text" name="name" placeholder="Your name" required maxlength="100">
       <textarea name="message" placeholder="Your message" required maxlength="1000" rows="4"></textarea>
@@ -26,6 +132,10 @@
     <h2>Messages</h2>
     <div id="entries">Loading...</div>
   </section>
+
+  <footer class="site-footer">
+    <p>Built for learning. See <a href="https://github.com/Duncan-Cloudflare/guestbook-cloudflare">GitHub repo</a> for source code.</p>
+  </footer>
 
   <script src="/app.js"></script>
 </body>
