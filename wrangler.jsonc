@@ -1,0 +1,13 @@
+{
+  "name": "guestbook-cloudflare",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-08-18",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true
+  },
+  // Bindings will be added in later phases:
+  // "d1_databases": [...],
+  // "kv_namespaces": [...],
+  // "queues": {...}
+}

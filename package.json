@@ -1,0 +1,25 @@
+{
+  "name": "guestbook-cloudflare",
+  "version": "1.0.0",
+  "description": "Demo Cloudflare Developer Platform site",
+  "homepage": "https://github.com/Duncan-Cloudflare/guestbook-cloudflare#readme",
+  "bugs": {
+    "url": "https://github.com/Duncan-Cloudflare/guestbook-cloudflare/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Duncan-Cloudflare/guestbook-cloudflare.git"
+  },
+  "license": "ISC",
+  "author": "Duncan",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260818.1",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.123.0"
+  }
+}
