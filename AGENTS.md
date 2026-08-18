@@ -13,7 +13,7 @@
 | Phase 1 — Repo & Tooling | ✅ Complete | Repo created at `Duncan-Cloudflare/guestbook-cloudflare`, cloned via SSH, Node project initialized, Wrangler/TypeScript installed, `tsconfig.json`, `wrangler.jsonc`, `.gitignore` committed. |
 | Phase 2 — D1 Setup | ✅ Complete | Database `guestbook-db` created (`ddbaee27-34a1-4266-8ca9-84a08fd0d52b`), binding added to `wrangler.jsonc`, migration `0001_create_tables.sql` applied locally and remotely, tables verified. |
 | Phase 3 — KV & Queue Setup | ✅ Complete | KV namespace `GUESTBOOK_CACHE` created, Queue `guestbook-events` and DLQ `guestbook-events-dlq` created, producer/consumer bindings added to `wrangler.jsonc`. |
-| Phase 4 — Core Worker | ⏳ Not started |  |
+| Phase 4 — Core Worker | 🔄 In progress | Source files created, TypeScript compiles. Awaiting local `wrangler dev` testing. |
 | Phase 5 — Queue Consumer | ⏳ Not started |  |
 | Phase 6 — Frontend | ⏳ Not started |  |
 | Phase 7 — Deploy & CI/CD | ⏳ Not started |  |
